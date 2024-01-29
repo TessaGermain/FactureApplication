@@ -50,7 +50,7 @@ fun Title(title: String){
     )
     Text(
         title,
-        color = Color(0xFF292929),
+        color = Color(0xFF990000), /*Commit Test*/
         fontSize = 30.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
