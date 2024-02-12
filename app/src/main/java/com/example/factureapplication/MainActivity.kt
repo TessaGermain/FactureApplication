@@ -13,17 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.factureapplication.Nav
+import com.example.factureapplication.ui.theme.CustomTypography
+import com.example.factureapplication.ui.theme.DarkRed
 import com.example.factureapplication.ui.theme.FactureApplicationTheme
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    Nav()
                 }
             }
         }
@@ -45,19 +40,22 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Title(title: String){
-    val poppinsFamily = FontFamily(
-        Font(R.font.poppins_bold, FontWeight.Bold)
-    )
+
     Text(
         title,
-        color = Color(0xFF990000), /*Commit Test*/
-        fontSize = 30.sp,
-        fontWeight = FontWeight.Bold,
-        textAlign = TextAlign.Center,
-        fontFamily = poppinsFamily,
+        style = CustomTypography.bodyLarge,
         modifier = Modifier
             .fillMaxWidth()
             .padding(20.dp)
+    )
+}
+
+@Composable
+fun Label(label: String){
+    Text(
+        text = label,
+        style = CustomTypography.labelSmall,
+        modifier = Modifier
     )
 }
 
