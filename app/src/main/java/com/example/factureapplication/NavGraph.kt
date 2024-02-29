@@ -1,12 +1,11 @@
 package com.example.factureapplication
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.factureapplication.redirection.layoutOne
-import com.example.factureapplication.redirection.layoutThree
-import com.example.factureapplication.redirection.layoutTwo
+import androidx.navigation.navArgument
 
 @Composable
 fun Nav() {
@@ -17,6 +16,13 @@ fun Nav() {
         }
         composable(route = "Home") {
             Home(navController)
+        }
+        composable(
+            route = "Calcul/{ttcAmount}",
+            arguments = listOf(navArgument("ttcAmount") { type = NavType.StringType })
+        ) {
+            backstraEntry ->
+                Calcul(navController, ttcAmount = backstraEntry.arguments?.getString("ttcAmount"))
         }
     }
 }

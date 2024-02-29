@@ -1,6 +1,7 @@
 package com.example.factureapplication.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -26,14 +27,14 @@ val CustomTypography = Typography(
     ),
     titleLarge = TextStyle(
         fontFamily = poppinsFamily,
-        color = DarkRed,
+        color = Color.White,
         fontSize = 30.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     ),
     titleMedium = TextStyle(
         fontFamily = poppinsFamily,
-        color = DarkBlack,
+        color = Color.White,
         fontSize = 25.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
@@ -44,5 +45,12 @@ val CustomTypography = Typography(
         fontSize = 18.sp,
         textAlign = TextAlign.Left,
         fontWeight = FontWeight.Medium
-    )
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = poppinsFamily,
+        color = Color.White,
+        fontSize = 30.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+)
 )

@@ -1,22 +1,23 @@
 package com.example.factureapplication
 
+//import com.example.factureapplication.ui.theme.ButtonCustom
+
 import android.content.Context
-import android.text.style.BackgroundColorSpan
-import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,17 +25,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-//import com.example.factureapplication.ui.theme.ButtonCustom
 import com.example.factureapplication.ui.theme.CustomTypography
-import com.example.factureapplication.ui.theme.DarkBlack
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import com.example.factureapplication.ui.theme.Aniline
+import com.example.factureapplication.ui.theme.MainColor
 
 
 @Composable
@@ -46,7 +51,12 @@ fun Login(navController: NavHostController){
         mutableStateOf("")
     }
     val mContext = LocalContext.current
-    Column (horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier.fillMaxSize()){
+    val applyVisualTransformation: Boolean = true;
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize().background(color= Aniline),
+    ){
         Text(
             text = "Connexion",
             style = CustomTypography.titleMedium,
@@ -61,7 +71,8 @@ fun Login(navController: NavHostController){
         OutlinedTextField(
             value = loginValue,
             onValueChange = { loginValue=it },
-            label = { Label("Identifiant") }
+            label = { Label("Identifiant") },
+            textStyle = TextStyle(color = Color.White),
         )
         Spacer(
             Modifier
@@ -72,13 +83,17 @@ fun Login(navController: NavHostController){
             value = mdpValue,
             onValueChange = { mdpValue=it },
             label = { Label("Mot de passe") },
-            //keyboardOptions = androidx.compose.ui.text.input.KeyboardOptions.Default.copy(
-            //    keyboardType = KeyboardType.Password
-            //)
+            textStyle = TextStyle(color = Color.White),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Next
+            ),
+            visualTransformation = if (applyVisualTransformation) PasswordVisualTransformation()
+            else VisualTransformation.None
         )
         Spacer(
             Modifier
-                .height(15.dp)
+                .height(25.dp)
                 .fillMaxSize()
         )
         ElevatedButton(
@@ -91,10 +106,10 @@ fun Login(navController: NavHostController){
                 }
             },
             colors = ButtonDefaults.buttonColors(
-                containerColor = DarkBlack,
+                containerColor = MainColor,
             )
         ) {
-            Text(text = "Se connecter", fontSize = 20.sp)
+            Text(text = "Se connecter", fontSize = 18.sp)
         }    }
 }
 
